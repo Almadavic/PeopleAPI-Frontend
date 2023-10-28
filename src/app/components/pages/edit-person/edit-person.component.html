@@ -1,0 +1,4 @@
+<div *ngIf="personResponse!" class="edit">
+  <h2>Updating <span>{{ personResponse.name }} </span> data </h2>
+  <app-person-form [btnText]="btnText" [personData]="personResponse" (onSubmit)="updateHandler($event)"></app-person-form>
+</div>

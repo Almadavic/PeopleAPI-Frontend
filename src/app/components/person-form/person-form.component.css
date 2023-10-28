@@ -1,0 +1,66 @@
+/* Estilo base para o formulário */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: end;
+  gap: 50px;
+}
+
+
+.address, .info-gerais{
+  margin-top: 2em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: brown;
+}
+
+.info-gerais-container {
+  align-self: center;
+  justify-self: end;
+}
+
+.address-container {
+  align-self: self-start;
+  justify-self: start;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+input {
+  margin-top: 5px;
+  padding: 4px;
+}
+
+.submit {
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  grid-column: 1/-1;
+  max-width: 100%;
+  text-align: center;
+}
+
+.submit:hover {
+  background-color: #0056b3;
+}
+
+.validation-error p {
+  color: #DC3545;
+  margin-top: 0.4em;
+  border-left: 3px solid #DC3545;
+  padding-left: 0.2em;
+ }
+

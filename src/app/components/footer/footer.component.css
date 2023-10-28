@@ -1,0 +1,16 @@
+footer {
+  text-align: center;
+}
+
+footer {
+  border: 2px solid bisque;
+}
+
+footer span {
+  color: red;
+  border: black;
+}
+
+h2 {
+  margin-top: 20px;
+}

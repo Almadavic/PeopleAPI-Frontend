@@ -1,0 +1,105 @@
+.people {
+  margin-top: 50px;
+}
+
+.title {
+  text-transform: uppercase;
+
+  font-weight: 200;
+  max-width: 100%;
+  text-align: center;
+}
+
+.person {
+  margin-top: 20px;
+}
+
+ul {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+li {
+  border: 2px solid beige;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.id span {
+  color: red;
+}
+
+.no-people {
+  margin-top: 6em;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.address {
+  color: brown;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+}
+
+.detalhes {
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid bisque;
+  border-radius: 6px;
+}
+
+.detalhes:hover {
+  padding: 5px;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+  background-color: bisque;
+}
+
+.info button {
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid red;
+  border-radius: 6px;
+}
+
+.info button:hover {
+  padding: 5px;
+  color: white;
+  border-radius: 6px;
+  background-color: red;
+}
+
+.editar {
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid blue;
+  border-radius: 6px;
+}
+
+.editar:hover {
+  padding: 5px;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+  background-color: blue;
+}
+
+.new-person {
+  max-width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  border: 2px solid blueviolet;
+  margin-left: 15%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.new-person:hover {
+  background-color: beige;
+}

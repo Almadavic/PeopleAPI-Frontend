@@ -1,0 +1,50 @@
+.person {
+  text-align: center;
+  border: 2px solid beige;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.id span {
+  color: red;
+}
+
+.address {
+  color: brown;
+  font-weight: bold;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 15px;
+}
+
+.editar {
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid blue;
+  border-radius: 6px;
+}
+
+.editar:hover {
+  padding: 5px;
+  border: 2px solid #FFFFFF;
+  border-radius: 6px;
+  background-color: blue;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid red;
+  border-radius: 6px;
+}
+
+button:hover {
+  padding: 5px;
+  color: white;
+  border-radius: 6px;
+  background-color: red;
+}
