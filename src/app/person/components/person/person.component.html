@@ -1,0 +1,25 @@
+<div class="person" *ngIf="person else spinner">
+    <p class="id"> Id: <span>{{ person.id }}</span></p>
+    <h3><span>{{ person.name }}</span></h3>
+    <p> Email: <span>{{ person.email }}</span></p>
+    <p> Gender: <span>{{ person.gender }}</span></p>
+    <p> Age: <span>{{ person.age }}</span></p>
+    <p> Created At: <span>{{ person.created_at | date: 'dd/MM/yyyy HH:mm' }}</span></p>
+    <p *ngIf="person.updated_at"> Updated At: <span>{{ person.updated_at | date: 'dd/MM/yyyy HH:mm' }}</span></p>
+    <div class="address">
+    <p>Address</p>
+    <p>Country: {{ person.address.country }}</p>
+    <p>State: {{ person.address.state }}</p>
+    <p>City: {{ person.address.city }}</p>
+  </div>
+  <div class="options">
+    <button (click)="removePerson(person.id)">Remove</button>
+    <a routerLink="/people/edit/{{person.id}}" class="editar">Edit</a>
+  </div>
+  </div>
+  <ng-template #spinner>
+    <mat-spinner diameter="70" class="spinner"></mat-spinner>
+  </ng-template>
+
+
+

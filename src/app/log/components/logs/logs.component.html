@@ -1,0 +1,27 @@
+<div class="logs">
+  <h1 class="title">Logs</h1>
+<div *ngIf=" logs.length > 0 else: noLogs">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Event</th>
+        <th>Event Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logs">
+        <td>{{ log.id }}</td>
+        <td>{{ log.event }}</td>
+        <td>{{ log.event_time | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noLogs>
+  <div class="no-logs">
+  <p>Sem logs para mostrar!</p>
+ </div>
+</ng-template>
+
+</div>

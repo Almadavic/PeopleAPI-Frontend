@@ -1,12 +1,13 @@
 <div class="people">
   <h1 class="title">People</h1>
   <div *ngIf="isRequestOk || hasError else: spinner">
+    <a class="new-person" routerLink="/people/new">New Person</a>
     <div *ngIf="people.length > 0 || hasError else: noPeople">
       <ul>
         <li *ngFor="let person of people">
           <div class="person">
-            <h3>{{ person.name }}</h3>
             <p class="id"> Id: <span>{{ person.id }}</span></p>
+            <h3><span>{{ person.name }}</span></h3>
             <p> Email: <span>{{ person.email }}</span></p>
             <p> Gender: <span>{{ person.gender }}</span></p>
             <p> Age: <span>{{ person.age }}</span></p>

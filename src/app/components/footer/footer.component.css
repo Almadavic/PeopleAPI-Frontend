@@ -2,15 +2,8 @@ footer {
   text-align: center;
 }
 
-footer {
-  border: 2px solid bisque;
-}
-
 footer span {
-  color: red;
+  color: rgb(194, 43, 43);
   border: black;
 }
 
-h2 {
-  margin-top: 20px;
-}

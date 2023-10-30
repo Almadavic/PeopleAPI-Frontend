@@ -1,0 +1,86 @@
+<form (ngSubmit)="submit()" [formGroup]="personForm" #formDir="ngForm">
+  <div class="info-gerais-container">
+    <h3 class="info-gerais">General Info</h3>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text"
+    placeholder="Type your name"
+    formControlName="name"
+    required>
+    <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
+       <p *ngIf="name.errors?.['required']">The name is required.</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="text"
+    placeholder="Type your e-mail"
+    formControlName="email"
+    required>
+    <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+       <p *ngIf="email.errors?.['required']">The e-mail is required.</p>
+       <p *ngIf="email.errors?.['email']">The e-mail contains an invalid format</p>
+    </div>
+  </div>
+    <div class="form-group">
+      <label for="date_of_birth">Date of Birth:</label>
+      <input type="text"
+      placeholder="Type your date of birth"
+      formControlName="date_of_birth"
+      [mask]="dateMask"
+      required>
+      <div *ngIf="date_of_birth.invalid && formDir.submitted" class="validation-error">
+         <p *ngIf="date_of_birth.errors?.['required']">The e-mail is required.</p>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+
+        <div class="radio-buttons">
+          <input type="radio" id="female" name="gender" value="female" formControlName="gender" required>
+          <label for="female">Female</label>
+
+          <input type="radio" id="male" name="gender" value="male" formControlName="gender" required>
+          <label for="male">Male</label>
+        </div>
+        <div *ngIf="gender.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="gender.errors?.['required']">Gender is required.</p>
+        </div>
+      </div>
+    </div>
+      <div class="address-container">
+      <h3 class="address">Address</h3>
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text"
+        placeholder="Type your country"
+        formControlName="country"
+        required>
+        <div *ngIf="country.invalid && formDir.submitted" class="validation-error">
+           <p *ngIf="country.errors?.['required']">The country is required.</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text"
+        placeholder="Type your state"
+        formControlName="state"
+        required>
+        <div *ngIf="state.invalid && formDir.submitted" class="validation-error">
+           <p *ngIf="state.errors?.['required']">The state is required.</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text"
+        placeholder="Type your city"
+        formControlName="city"
+        required>
+        <div *ngIf="city.invalid && formDir.submitted" class="validation-error">
+           <p *ngIf="city.errors?.['required']">The city is required.</p>
+        </div>
+      </div>
+    </div>
+      <input class="submit" type="submit" value="{{btnText}}">
+</form>

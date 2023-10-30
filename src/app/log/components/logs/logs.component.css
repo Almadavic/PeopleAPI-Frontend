@@ -1,3 +1,8 @@
+.title {
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: 200;
+}
 
 table {
   border-collapse: collapse;
