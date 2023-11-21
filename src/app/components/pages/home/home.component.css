@@ -1,5 +1,7 @@
 .people {
   margin-top: 50px;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 .title {
@@ -26,12 +28,11 @@ h3 {
 }
 
 ul {
-  max-width: 90%;
   margin: 0 auto;
   margin-top: 30px;
-  display: grid;
-  gap: 40px 30px;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 7px;
 }
 
 li {
@@ -70,8 +71,15 @@ li {
   cursor: pointer;
   padding: 5px;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
+.detalhes mat-icon, .info button mat-icon, .info .editar mat-icon {
+  font-size: 80%;
+  margin-top: 2px;
+}
 .detalhes:hover {
   padding: 5px;
   border-radius: 6px;
@@ -91,6 +99,14 @@ li {
   cursor: pointer;
   padding: 5px;
   border-radius: 6px;
+  display: flex;
+  gap: 3px;
+  max-width: 100%;
+}
+
+.editar .edit-icon {
+  margin-top: -4px;
+  height: 20px;
 }
 
 .editar:hover {
@@ -120,9 +136,45 @@ li a, .info button {
 
 .info button {
   font-size: 20px;
+  display: flex;
 }
 
 li a:hover, li button:hover {
   background-color: rgb(182, 182, 218);
   border: 1px solid black;
 }
+
+.info {
+  display: flex;
+  width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+}
+
+.pesquisa {
+  display: flex;
+  gap: 10px;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.pesquisa input {
+  padding: 5px 40px;
+  border-radius: 50px;
+  border: none;
+}
+
+.resultados p {
+  font-weight: bold;
+  margin: 0;
+}
+
+.resultados span {
+  font-size: 16px;
+  color: blueviolet;
+  font-weight: bold;
+}
+

@@ -5,6 +5,7 @@ import { PersonResponse } from 'src/app/interfaces/PersonResponse';
 import { MessageService } from 'src/app/services/message/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -38,11 +39,19 @@ export class PersonComponent {
 }
 
   removePerson(id: string) {
-    this.personService.removePerson(id).subscribe((item) => {
-      this.messageService.add(item.message);
-        this.router.navigate(['/']);
+
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      data: 'Você deseja excluir essa pessoa?',
     });
 
+    dialog.afterClosed().subscribe(result => {
+      if(result === 'yes') {
+        this.personService.removePerson(id).subscribe((item) => {
+          this.messageService.add(item.message);
+          this.router.navigate(['/']);
+        });
+      }
+    })
   }
 
   onError(errorMessage: string) {

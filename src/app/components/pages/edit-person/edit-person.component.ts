@@ -5,6 +5,8 @@ import { PersonResponse } from 'src/app/interfaces/PersonResponse';
 import { FormGroup } from '@angular/forms';
 import { PersonRequest } from 'src/app/interfaces/PersonRequest';
 import { MessageService } from 'src/app/services/message/message.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-edit-person',
@@ -21,13 +23,19 @@ export class EditPersonComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private route: ActivatedRoute,
+    private dialog : MatDialog
   ) {}
 
    ngOnInit(): void {
     const personId = String(this.route.snapshot.paramMap.get("id"));
-    this.personService.getPerson(personId).subscribe(item => {
-      this.personResponse = item.data;
-    });
+    this.personService.getPerson(personId).subscribe({
+      next: (data) => {
+        this.personResponse = data.data;
+      }, error: (error) => {
+         this.onError(error.error.message);
+         this.router.navigate(['/']);
+      }
+    })
   }
 
   updateHandler(formGroup: FormGroup) {
@@ -74,5 +82,11 @@ export class EditPersonComponent implements OnInit {
 
     return newDateFormated.substring(0, newDateFormated.length-1);
   }
+
+  onError(errorMessage: string) {
+    this.dialog.open(ErrorDialogComponent, {
+     data: errorMessage
+    })
+ }
 
 }

@@ -1,5 +1,14 @@
 <div class="people">
   <h1 class="title">People</h1>
+  <div class="info">
+    <div class="resultados">
+      <p>Resultados encontrados: <span>{{ peopleListSize }} </span></p>
+    </div>
+    <div class="pesquisa">
+    <input (input)="search($event)" placeholder="     Digite o nome aqui...">
+    <img src="/assets/lupa.png" width="17" height="17" alt="">
+  </div>
+  </div>
   <div *ngIf="isRequestOk || hasError else: spinner">
     <div *ngIf="people.length > 0 || hasError else: noPeople">
       <ul>
@@ -12,9 +21,15 @@
             <p> Age: <span>{{ person.age }}</span></p>
           </div>
           <div class="info">
-            <a routerLink="/people/{{ person.id }}" class="detalhes">Details</a>
-            <button (click)="removePerson(person.id)">Remove</button>
-            <a routerLink="/people/edit/{{person.id}}" class="editar">Edit</a>
+            <a routerLink="/people/{{ person.id }}" class="detalhes">
+              Details
+            </a>
+            <button (click)="removePerson(person.id)">
+              Remove
+            </button>
+            <a routerLink="/people/edit/{{person.id}}" class="editar">
+              Edit
+            </a>
           </div>
         </li>
       </ul>

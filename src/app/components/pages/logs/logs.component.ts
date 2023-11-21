@@ -12,6 +12,7 @@ import { LogsService } from 'src/app/services/logs/logs.service';
 export class LogsComponent {
 
   logs: Log[] = [];
+  displayedColumns: string[] = ['id', 'event', 'event_time'];
 
   constructor(
     private logService: LogsService,

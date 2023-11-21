@@ -1,32 +1,15 @@
-
-table {
-  border-collapse: collapse;
-  width: 100%;
+h1 {
+  text-transform: uppercase;
+  margin: 50px 0 40px 130px;
 }
 
-th:first-child, td:first-child {
-  max-width: 0px;
+.table {
+  width: 1500px;
+  margin: 0 auto;
 }
 
-th:nth-child(3), td:nth-child(3) {
-  max-width: 20px;
-}
-
-th {
-  border: 1px solid black;
-  padding: 8px;
-  text-align: center;
-  background-color: #f2f2f2;
-  width: 100px;
-  margin-left: 0;
-}
-
-td {
-  width: 100px;
-  text-align: center;
-  padding: 5px;
-  border: 1px solid black;
-  margin-left: 0;
+tr:nth-child(even) {
+  background-color: #bba7ce;
 }
 
 .no-logs {
@@ -34,6 +17,5 @@ td {
   text-align: center;
   font-size: 1.5em;
 }
-
 
 

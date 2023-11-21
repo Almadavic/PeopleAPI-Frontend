@@ -15,12 +15,13 @@ import { PersonFormComponent } from './components/person-form/person-form.compon
 import { NewPersonComponent } from './components/pages/new-person/new-person.component';
 import { EditPersonComponent } from './components/pages/edit-person/edit-person.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import {DatePipe} from "@angular/common";
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { AppMaterialModule } from './shared/app-material/app-material.module';
+
 
 
 
@@ -36,7 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     PersonFormComponent,
     NewPersonComponent,
     EditPersonComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +48,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
-    MatProgressSpinnerModule,
     BrowserAnimationsModule,
     NgxMaskDirective,
-    MatDialogModule
+    AppMaterialModule
   ],
   providers: [provideNgxMask(), DatePipe],
   bootstrap: [AppComponent]

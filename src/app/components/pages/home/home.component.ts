@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
 import { MessageService } from 'src/app/services/message/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +17,12 @@ import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component'
 })
 export class HomeComponent {
 
-  people: PersonResponse[] = []
+  people: PersonResponse[] = [];
+  peopleListSize!: number;
   isRequestOk: boolean = false;
   hasError: boolean = false;
+  personName!: string;
+  updatePeople: Subscription | undefined;
 
   constructor(
     private personService: PersonService,
@@ -26,14 +31,15 @@ export class HomeComponent {
     ) {}
 
   ngOnInit() {
-    this.personService.getPeople().subscribe({
+    this.personService.getPeople(null).subscribe({
       next: (item) => {
           this.people = item.data;
           this.isRequestOk = true;
+          this.peopleListSize = item.items_amount;
+
       },
       error: (error) => {
         this.hasError = true;
-        console.log(this.hasError || this.isRequestOk);
         if(error.error && error.error.message) {
         this.onError(error.error.message);
         } else {
@@ -41,15 +47,32 @@ export class HomeComponent {
         }
 
       }
-    },)
-  }
+    },);
 
-  async removePerson(id: string) {
-    await this.personService.removePerson(id).subscribe((item) => {
-      this.messageService.add(item.message);
-      this.personService.getPeople().subscribe(item => this.people = item.data);
+    this.updatePeople = interval(20000).subscribe(() => {
+      this.personService.getPeople(null).subscribe((data) =>{
+         this.people = data.data;
+      })
     });
 
+  }
+
+  removePerson(id: string) {
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      data: 'Você deseja excluir essa pessoa?',
+    });
+
+    dialog.afterClosed().subscribe(result => {
+      if(result === 'yes') {
+        this.personService.removePerson(id).subscribe((item) => {
+          this.messageService.add(item.message);
+          this.personService.getPeople(null).subscribe(item => {
+            this.people = item.data
+            this.peopleListSize = item.items_amount;
+          });
+        });
+      }
+    })
   }
 
 
@@ -65,6 +88,23 @@ export class HomeComponent {
 
  }
 
+ search(event : Event) :void {
 
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+    this.personService.getPeople(value).subscribe(item => {
+      setTimeout(() => {
+        this.people = item.data
+        this.peopleListSize = item.items_amount;
+      }, 500)
+    });
+
+ }
+
+ ngOnDestroy(): void {
+  if ( this.updatePeople) {
+    this.updatePeople.unsubscribe();
+  }
+}
 
 }

@@ -1,0 +1,22 @@
+.dialog {
+  padding: 20px 70px;
+  border: 5px solid gray;
+}
+
+.buttons {
+ display: flex;
+ gap: 15px;
+}
+
+.buttons button {
+  padding: 4px 10px;
+  font-size: 15px;
+  border: 1px solid gray;
+
+}
+
+button:hover {
+  color: white;
+  background-color: gray;
+  cursor: pointer;
+}
