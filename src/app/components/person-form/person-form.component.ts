@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersonResponse } from 'src/app/interfaces/PersonResponse';
-import {DatePipe} from "@angular/common";
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: 'app-person-form',
@@ -67,10 +67,9 @@ export class PersonFormComponent implements OnInit {
 
 
   submit() {
-    if(this.personForm.invalid) {
-      return;
+    if(this.personForm.valid) {
+      this.onSubmit.emit(this.personForm);
     }
-    this.onSubmit.emit(this.personForm);
   }
 
 }

@@ -33,6 +33,7 @@ export class NewPersonComponent {
   convertFromFormGroupToPerson(formGroup : FormGroup) : PersonRequest {
      const personData = formGroup.value;
      const dateFormated = this.formatDate(personData.date_of_birth);
+     console.log(dateFormated);
     return {
       name: personData.name,
       email: personData.email,

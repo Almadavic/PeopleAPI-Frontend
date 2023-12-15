@@ -32,7 +32,6 @@ export class HomeComponent {
       },
       error: (error) => {
         this.hasError = true;
-        console.log(this.hasError || this.isRequestOk);
         if (error.error && error.error.message) {
           this.onError(error.error.message);
         } else {
