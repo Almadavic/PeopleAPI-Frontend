@@ -71,11 +71,6 @@ export class PersonFormComponent implements OnInit {
       return;
     }
     this.onSubmit.emit(this.personForm);
-    this.teste('oi', "oi", "ijdsijdi", 5);
-  }
-
-  teste(...strings: String[]) : void {
-
   }
 
 }

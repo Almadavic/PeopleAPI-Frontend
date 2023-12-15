@@ -1,13 +1,10 @@
 .people {
   margin-top: 50px;
-  max-width: 95%;
-  margin: 0 auto;
 }
 
 .title {
   text-transform: uppercase;
   font-weight: 700;
-  max-width: 100%;
   text-align: center;
   font-family: 'Golden';
   text-align: center;
@@ -28,11 +25,11 @@ h3 {
 }
 
 ul {
-  margin: 0 auto;
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
-  gap: 28px 7px;
+  gap: 30px 7px;
+  max-width: 100%;
 }
 
 li {

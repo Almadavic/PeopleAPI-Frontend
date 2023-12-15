@@ -17,7 +17,7 @@
     placeholder="Type your e-mail"
     formControlName="email"
     required>
-    <div *ngIf="email.invalid && formDir.submitted" class="validation-error">
+    <div *ngIf="email.invalid && (formDir.submitted || email.touched)" class="validation-error">
        <p *ngIf="email.errors?.['required']">The e-mail is required.</p>
        <p *ngIf="email.errors?.['email']">The e-mail contains an invalid format</p>
     </div>

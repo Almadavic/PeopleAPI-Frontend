@@ -23,12 +23,12 @@ export class PersonService {
 
   constructor(private http: HttpClient) { }
 
-  getPeople(personName: string | null): Observable<StatusDataCollectionLinksResponse<PersonResponse[]>> {
-    if(personName) {
-    return this.http.get<StatusDataCollectionLinksResponse<PersonResponse[]>>(`${this.apiUrl}?name=${personName}`);
-    } else {
-      return this.http.get<StatusDataCollectionLinksResponse<PersonResponse[]>>(this.apiUrl);
-    }
+  getPeople(personName: string): Observable<StatusDataCollectionLinksResponse<PersonResponse[]>> {
+    return this.http.get<StatusDataCollectionLinksResponse<PersonResponse[]>>(this.apiUrl, {
+      params: {
+        "name": personName
+      }
+    });
   }
 
   getPerson(id: string): Observable<StatusDataResponse<PersonResponse>> {

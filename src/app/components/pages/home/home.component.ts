@@ -23,6 +23,7 @@ export class HomeComponent {
   hasError: boolean = false;
   personName!: string;
   updatePeople: Subscription | undefined;
+  searchString = '';
 
   constructor(
     private personService: PersonService,
@@ -31,7 +32,7 @@ export class HomeComponent {
     ) {}
 
   ngOnInit() {
-    this.personService.getPeople(null).subscribe({
+    this.personService.getPeople('').subscribe({
       next: (item) => {
           this.people = item.data;
           this.isRequestOk = true;
@@ -50,7 +51,7 @@ export class HomeComponent {
     },);
 
     this.updatePeople = interval(20000).subscribe(() => {
-      this.personService.getPeople(null).subscribe((data) =>{
+      this.personService.getPeople('').subscribe((data) =>{
          this.people = data.data;
       })
     });
@@ -66,7 +67,7 @@ export class HomeComponent {
       if(result === 'yes') {
         this.personService.removePerson(id).subscribe((item) => {
           this.messageService.add(item.message);
-          this.personService.getPeople(null).subscribe(item => {
+          this.personService.getPeople('').subscribe(item => {
             this.people = item.data
             this.peopleListSize = item.items_amount;
           });
@@ -88,11 +89,9 @@ export class HomeComponent {
 
  }
 
- search(event : Event) :void {
+ search() :void {
 
-    const target = event.target as HTMLInputElement;
-    const value = target.value;
-    this.personService.getPeople(value).subscribe(item => {
+    this.personService.getPeople(this.searchString).subscribe(item => {
       setTimeout(() => {
         this.people = item.data
         this.peopleListSize = item.items_amount;

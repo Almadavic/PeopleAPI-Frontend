@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PersonRequest } from 'src/app/interfaces/PersonRequest';
 import { FormGroup } from '@angular/forms';
 import { PersonService } from 'src/app/services/person/person.service';
@@ -20,10 +20,10 @@ export class NewPersonComponent {
     private router: Router
   ) {}
 
-  async registerHandler(formGroup: FormGroup) {
+  registerHandler(formGroup: FormGroup) {
 
      const person: PersonRequest = this.convertFromFormGroupToPerson(formGroup);
-     await this.personService.savePerson(person).subscribe((item) =>{
+     this.personService.savePerson(person).subscribe((item) =>{
      this.messageService.add(item.status.message);
       this.router.navigate(['/']);
      });

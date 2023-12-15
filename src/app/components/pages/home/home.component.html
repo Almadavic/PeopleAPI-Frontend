@@ -5,7 +5,7 @@
       <p>Resultados encontrados: <span>{{ peopleListSize }} </span></p>
     </div>
     <div class="pesquisa">
-    <input (input)="search($event)" placeholder="     Digite o nome aqui...">
+    <input [(ngModel)]="searchString" placeholder="     Digite o nome aqui..." (ngModelChange)="search()">
     <img src="/assets/lupa.png" width="17" height="17" alt="">
   </div>
   </div>

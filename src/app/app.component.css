@@ -1,5 +1,7 @@
 .container {
   min-height: 78vh;
+  margin: 0 auto;
   margin-top: 1.5em;
+  width: 1643px;
 }
 
